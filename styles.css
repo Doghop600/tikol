@@ -330,18 +330,3 @@ main{
 .p2-card{
     margin: 30px;
 }
-
-.card-link{
-width: 1596px;
-height: 246px;
-/* Автолейаут */
-display: flex;
-flex-direction: row;
-justify-content: flex-start;
-align-items: flex-start;
-gap: 20;
-padding: 20px;
-
-align-self: stretch;
-margin: 100px 0px;
-}
