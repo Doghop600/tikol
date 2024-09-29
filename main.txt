@@ -1,0 +1,42 @@
+<main>
+        <div class="main-text">
+            <h1>Today's Headlines: Stay <br> Informed</h1>
+            <h5>Explore the latest news from around the world. We bring you up-to-the-minute updates on the most significant events, trends, and stories. Discover the world through our news coverage.</h5>
+        </div>
+        <div class="main-img-near-text">
+            <img src="./assets/picture.svg">
+        </div>
+
+        <div class="about-main">
+            <h6>category</h6><br><p>inviroment</p>
+            <h6>prodyction date</h6><br><p>oxt 10 2023</p>
+            <h6>author</h6><br><p>Jone smith</p>
+        </div>
+        
+        <div class="sub-container-card">
+            <img src="./assets/card.svg">
+            <h5>A Decisive victory for progressive policies</h5>
+            <p>Politics</p>
+
+            <div>
+                <button id="">2.2k</button>
+        
+            </div>
+
+        </div>
+        
+        <div class="mid-container">
+            <h5>Welcome to Our News Hub</h5>
+            <h3>Discover the World of Headlines</h3>
+            <button class="mid-arrow-btn">View All News <img src="./assets/icons/arrow.svg"></button>
+        </div>
+
+        <div class="tabs-container">
+            <button class="btn">All</button>
+            <button>tecnology</button>
+            <button>Politics</button>
+            <button>Health</button>
+            <button>Enviroment</button>
+            <button>Sports</button>
+        </div>
+    </main>

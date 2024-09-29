@@ -1,0 +1,347 @@
+/* Основные стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #111;
+    color: #fff;
+}
+
+a {
+    text-decoration: none;
+}
+
+button{
+    border: none;
+    cursor: pointer;
+}
+
+/* Стили для header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1c1c1c;
+    border-bottom: 1px solid #333;
+    flex-wrap: wrap; /* Позволяет адаптироваться на малых экранах */
+}
+
+/* Верхний блок подписки */
+.subscribe-box {
+    background-color: #333;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    background: rgb(20, 20, 20);
+    border-bottom: 1px solid rgb(38, 38, 38);
+    
+}
+
+.subscribe-box a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    
+}
+
+.subscribe-box a img {
+    margin-left: 8px;
+    width: 16px;
+    height: 16px;
+    
+}
+
+/* Основная навигация */
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.main-nav ul li a {
+    color: rgb(126, 126, 129);
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+.main-nav ul li a:hover {
+    color: #ffcc00;
+    transform: all;
+}
+
+/* Кнопка "Contact Us" */
+.contact-button {
+    display: flex;
+    align-items: center;
+    
+}
+
+.contact-button .btn {
+    background-color: #ffcc00;
+    color: #111;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    min-width: 130px;
+    text-align: center;
+}
+
+.contact-button .btn:hover {
+    background-color: #e6b800;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .subscribe-box {
+        text-align: left;
+        padding: 10px 20px;
+    }
+
+    .contact-button {
+        margin-top: 10px;
+        width: 100%; /* Кнопка будет на всю ширину экрана на малых устройствах */
+    }
+
+    .contact-button .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.main-text{
+    margin: 25px;
+}
+
+h5{
+    color: rgb(152, 152, 154);
+    font-size: 18px;
+    text-align: left;
+}
+
+.main-img-near-text{
+    /* Image */
+position: static;
+width: 515px;
+height: 427px;
+/* Inside Auto Layout */
+flex: none;
+}
+
+.sub-container-card{
+    /* Image */
+position: static;
+width: 515px;
+height: 427px;
+/* Inside Auto Layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+margin: 0px 80px;
+border-radius: 5px;
+}
+
+
+.mid-container{
+    /* Container */
+position: static;
+width: 1150px;
+height: 133px;
+/* Автолейаут */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 16;
+padding: 0px;
+
+/* Inside Auto Layout */
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 1;
+margin: 0px 250px;
+}
+
+.mid-arrow-btn{
+    position: static;
+    width: 196px;
+    height: 63px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 24px 18px 24px;
+
+    border-radius: 6px;
+    box-sizing: border-box;
+    /* Dark/15 */
+    border: 1px solid rgb(38, 38, 38);
+    border-radius: 12px; 
+    /* Dark/08 */
+    background: rgb(20, 20, 20);
+}
+
+.tabs-container{
+    /* Tabs Container */
+    position: static;
+    width: 1920px;
+    height: 187px;
+    /* Автолейаут */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20;
+    padding: 50px 162px 50px 162px;
+}
+
+.btn{
+  padding: 14px 20px 14px 20px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 150%;
+  color: rgb(20, 20, 20);
+  border-radius: 10px;
+  background: rgb(255, 209, 26);
+}
+
+.main-nav{
+    display: flex;
+    align-items: center;
+    padding: 20px 24px 20px 24px;
+    justify-content:space-between;
+    width: 100%;
+}
+
+.nav-btn:hover{
+    outline: 1px solid grey;
+    border-radius: 7px;
+    background-color: #111;
+}
+
+.nav-btn{
+    padding: 15px 25px 15px 25px;
+}
+
+
+main{
+    /* Sub Container */
+    position: static;
+    width: 1920px;
+    height: 803px;
+    /* Автолейаут */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 100;
+    padding: 120px 162px 120px 162px;
+}
+
+.sub-main-txt{
+    width: 285px;
+    height: 42px;
+    /* Автолейаут */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 6px 10px 6px 10px;
+
+    border-radius: 5px; 
+    /* Dark/20 */
+    background: rgb(51, 51, 51);
+
+}
+
+.link-btn{
+    background-color: rgb(255, 209, 26);
+    width: 52px;
+    height: 52px;
+    border-radius: 100px;
+}
+
+.card-link{
+    border: 1px solid rgb(38, 38, 38);
+    border-radius: 12px;
+    background: rgb(26, 26, 26);
+    padding: 39px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-link-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.links-greetings{
+    display: flex;
+    gap: 80px;
+}
+
+.p-card{
+    background-color: rgb(51, 51, 51);
+    border-radius: 5px;
+    /* Sub Container */
+    position: static;
+    width: 285px;
+    height: 42px;
+    /* Автолейаут */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10;
+    padding: 6px 10px 6px 10px;
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 16px 0px;
+}
+
+.h2-card{
+    margin: 16px;
+}
+
+.p2-card{
+    margin: 30px;
+}
+
+.card-link{
+width: 1596px;
+height: 246px;
+/* Автолейаут */
+display: flex;
+flex-direction: row;
+justify-content: flex-start;
+align-items: flex-start;
+gap: 20;
+padding: 20px;
+
+align-self: stretch;
+margin: 100px 0px;
+}
