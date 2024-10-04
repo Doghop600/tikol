@@ -245,10 +245,6 @@ margin: 0px 250px;
 
 
 main{
-    /* Sub Container */
-    position: static;
-    width: 1920px;
-    height: 803px;
     /* Автолейаут */
     display: flex;
     flex-direction: column;
@@ -287,6 +283,7 @@ main{
     padding: 39px;
     display: flex;
     flex-direction: column;
+    max-width: 505.33px;
 }
 
 .card-link-header{
@@ -329,4 +326,92 @@ main{
 
 .p2-card{
     margin: 30px;
+}
+
+.cards-links{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+
+}
+
+.footer {
+    background-color: #111;
+    color: #fff;
+    padding: 40px 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-column {
+    flex: 1;
+    margin: 20px;
+}
+
+.footer-column h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-column ul li a:hover {
+    color: #fff;
+}
+
+.new-badge {
+    background-color: #ffd700;
+    color: #111;
+    font-size: 12px;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+}
+
+.footer-bottom p {
+    margin: 5px 0;
+    color: #999;
+    font-size: 14px;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.social-icons a:hover {
+    color: #ffd700;
+}
+
+.new-badge-icon {
+    width: 12px; /* Размер иконки, можно настроить под свои нужды */
+    height: auto;
+    vertical-align: middle; /* Выравнивание с текстом */
+    margin-left: 5px; /* Отступ между текстом и иконкой */
 }
