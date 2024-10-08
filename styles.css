@@ -579,3 +579,10 @@ a{
         align-items: center;
     }
 } */
+
+
+.footer-svg{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
