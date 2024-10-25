@@ -7,7 +7,10 @@ function handleLogIn(event) {
     const user = Object.fromEntries(formData);
     console.log(user);
 
-    window.location.href = 'index.html';
+    // window.location.href = 'index.html';
+
+    const users = JSON.parse(localStorage.getItem('users')) || []
+    const foundedUser = 
 }
 
 logInForm.addEventListener('submit', handleLogIn);

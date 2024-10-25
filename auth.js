@@ -11,6 +11,12 @@ function handleFormSubmit(event) {
     //alert('user registed')
 
     //window.location.href = 'index.html'
+
+    const users = JSON.parse(localStorage.getItem('users')) || []
+
+    localStorage.setItem('newUser',JSON.stringify(newUser))
+    localStorage.setItem('users',JSON.stringify([...users, newUser]))
+
 }
 
 formSingUpEl.addEventListener('submit', handleFormSubmit)
