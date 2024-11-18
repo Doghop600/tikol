@@ -7,10 +7,19 @@ function handleLogIn(event) {
     const user = Object.fromEntries(formData);
     console.log(user);
 
-    // window.location.href = 'index.html';
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    console.log(users);
 
-    const users = JSON.parse(localStorage.getItem('users')) || []
-    const foundedUser = 
+    // Проверяем, существует ли пользователь в массиве users
+    const existingUser = users.find(u => u.username === user.username && u.password === user.password);
+
+    if (existingUser) {
+        // Если пользователь найден, перенаправляем на основную страницу site.html
+        window.location.href = 'site.html';
+    } else {
+        // Если пользователя нет, выводим сообщение об ошибке
+        alert('Неправильный логин или пароль');
+    }
 }
 
 logInForm.addEventListener('submit', handleLogIn);
