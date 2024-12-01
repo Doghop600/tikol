@@ -2,24 +2,93 @@ const newsArr = []
 const closeBtn = document.querySelector('#closeBtn')
 const formAddNews = document.querySelector('#formAddNews')
 const btnNews = document.querySelector('#news-btn')
+const newsSect = document.querySelector('.news')
+const notifications = document.querySelector(".notifications")
+
 btnNews.addEventListener('click', function () {
     formAddNews.style.display = 'flex'
 })
 
-function drawNews(data) {
-    
-}
+const drawNews = (data) => {
+    newsSect.innerHTML = data
+        .map((item, index) => {
+            return `<div class="divCard" data-index="${index}">
+                <h5>${item.title}</h5>
+                <p>${item.description}</p>
+                <button class="delete-btn" ${index % 2 === 0 ? 'disabled' : ''}>Удалить</button>
+            </div>`;
+        })
+        .join('');
+};
 
 formAddNews.addEventListener('submit', function(event) {
-        event.preventDefault();
-        const formData = new FormData(formAddNews);
-        const news = Object.fromEntries(formData);
+    event.preventDefault();
+    const formData = new FormData(formAddNews);
+    const news = Object.fromEntries(formData);
 
-        newsArr.push(news)
-        console.log(news);
-        console.log(newsArr)
-})
+    newsArr.push(news);
 
-closeBtn.addEventListener('click', function() {
-    formAddNews.style.display = 'none'
-})
+    drawNews(newsArr);
+
+    formAddNews.style.display = 'none';
+
+    createToast('success');
+});
+
+// Обработчик для кнопки Close
+closeBtn.addEventListener('click', function (event) {
+    event.preventDefault(); // Предотвращает поведение по умолчанию (например, submit)
+    formAddNews.style.display = 'none'; // Просто закрывает форму
+});
+
+
+const toastDetails = {
+    timer: 5000,
+    success: {
+        icon: "fa-circle-check",
+        text: "Новость успешно добавлена!",
+    },
+    error: {
+        icon: "fa-circle-xmark",
+        text: "Ошибка: невозможно удалить эту карточку.",
+    },
+    info: {
+        icon: "fa-circle-info",
+        text: "Информация об удалении.",
+    },
+};
+
+const removeToast = (toast) => {
+    toast.classList.add("hide");
+    if (toast.timeoutId) clearTimeout(toast.timeoutId);
+    setTimeout(() => toast.remove(), 500);
+};
+
+const createToast = (id) => {
+    const { icon, text } = toastDetails[id];
+    const toast = document.createElement("li");
+    toast.className = `toast ${id}`;
+    toast.innerHTML = `<div class="column">
+                           <i class="fa-solid ${icon}"></i>
+                           <span>${text}</span>
+                        </div>
+                        <i class="fa-solid fa-xmark" onclick="removeToast(this.parentElement)"></i>`;
+    notifications.appendChild(toast);
+    toast.timeoutId = setTimeout(() => removeToast(toast), toastDetails.timer);
+};
+
+// Удаление карточек
+newsSect.addEventListener('click', function (event) {
+    if (event.target.classList.contains('delete-btn')) {
+        const card = event.target.closest('.divCard');
+        const index = Number(card.dataset.index);
+
+        if (index % 2 === 0) {
+            createToast('error');
+        } else {
+            newsArr.splice(index, 1);
+            drawNews(newsArr);
+            createToast('success');
+        }
+    }
+});
