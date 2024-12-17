@@ -1,0 +1,107 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Основной контейнер формы */
+.container {
+    background-color: grey;
+    padding: 40px 30px;
+    border-radius: 10px;
+    width: 90%; /* Ширина по умолчанию 90% от родителя */
+    max-width: 400px; /* Максимальная ширина 400px */
+    position: relative;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+/* Стили для меток и полей ввода */
+label {
+    display: block;
+    margin-bottom: 20px;
+    color: #555;
+    font-size: 16px;
+}
+
+input {
+    width: 100%; /* 100% от контейнера */
+    margin-top: 5px;
+    padding: 12px 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+    border-color: #5CAF50;
+    outline: none;
+}
+
+/* Стили для кнопки отправки */
+.submit-btn {
+    width: 100%; /* 100% от контейнера */
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    background-color: #5CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #4CAF50;
+    transform: translateY(-2px);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 500px) {
+    .container {
+        padding: 30px 20px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    input, .submit-btn {
+        font-size: 14px;
+    }
+}
+
+
+.href{
+    text-decoration: none;
+    color: black;
+}

@@ -17,12 +17,23 @@
         <button id="closeBtn">close</button>
         <label for="title">title <input type="text" id="title" name="title" placeholder="Enter title"></label>
         <label for="description">description <input type="text" id="description" name="description" placeholder="description"></label>
-        <button>add</button>
+        <button class="addBtn">add</button>
     </form>
     <section class="news"></section>
 
     <ul class="notifications"></ul>
-
+    
+    <div class="overlay" id="modal-overlay"></div>
+    <div class="modal" id="edit-modal">
+        <h3>Edit Product</h3>
+        <form id="edit-form">
+            <label for="title">title <input type="text" id="title" name="title" placeholder="Enter title"></label>
+            <label for="description">description <input type="text" id="description" name="description" placeholder="description"></label>
+          <button type="submit">Save</button>
+          <button type="button" id="close-modal">Cancel</button>
+        </form>
+      </div>
+        
     <script src="news.js"></script>
 </body>
 </html>

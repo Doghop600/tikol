@@ -4,6 +4,18 @@ const formAddNews = document.querySelector('#formAddNews')
 const btnNews = document.querySelector('#news-btn')
 const newsSect = document.querySelector('.news')
 const notifications = document.querySelector(".notifications")
+const modal = document.querySelector('#edit-modal')
+const editForm = document.querySelector('#edit-form')
+
+const openModal = () => {
+    modal.classList.add('open');
+    overlay.classList.add('open');
+  };
+const closeModal = () => {
+    modal.classList.remove('open');
+    overlay.classList.remove('open');
+    editingProductId = null; // Clear editing state
+  };
 
 btnNews.addEventListener('click', function () {
     formAddNews.style.display = 'flex'
@@ -15,7 +27,8 @@ const drawNews = (data) => {
             return `<div class="divCard" data-index="${index}">
                 <h5>${item.title}</h5>
                 <p>${item.description}</p>
-                <button class="delete-btn" ${index % 2 === 0 ? 'disabled' : ''}>Удалить</button>
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
             </div>`;
         })
         .join('');
@@ -83,12 +96,19 @@ newsSect.addEventListener('click', function (event) {
         const card = event.target.closest('.divCard');
         const index = Number(card.dataset.index);
 
-        if (index % 2 === 0) {
-            createToast('error');
-        } else {
-            newsArr.splice(index, 1);
-            drawNews(newsArr);
-            createToast('success');
-        }
+        
+        newsArr.splice(index, 1);
+        drawNews(newsArr);
+        createToast('success');
+        
     }
+
+    if(event.target.classList.contains('edit-btn')) {
+        openModal()
+    }
+
 });
+
+editForm.addEventListener('submit', function(event) {
+    event.preventDefault()
+})

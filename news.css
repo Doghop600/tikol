@@ -4,6 +4,8 @@
     display: none;
     flex-direction: column;
     gap: 15px;
+    display: flex;
+    align-items: center;
 }
 
 :root {
@@ -196,11 +198,56 @@
     font-size: 0.85rem;
 }
 
-.divCard .delete-btn:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
+
 
 .divCard .delete-btn:hover:not(:disabled) {
     background-color: #b53535;
+}
+
+#closeBtn{
+  width: 75px;
+  height: 35px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.addBtn{
+  width: 150px;
+  height: 50px;
+  border-radius: 7px;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.news {
+  background-color: red;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  z-index: 1000;
+}
+.modal.open {
+  display: block;
+}
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+.overlay.open {
+  display: block;
 }
