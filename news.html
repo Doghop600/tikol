@@ -3,37 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="news.css">
+    <title></title>
+    <link rel="stylesheet" href="test.css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
 </head>
 <body>
-    <button id="news-btn">add news</button>
+    <!-- Button to open the "Add News" modal -->
+    <button id="news-btn">Add News</button>
 
-    <form id="formAddNews">
-        <h3>Add News</h3>
-        <button id="closeBtn">close</button>
-        <label for="title">title <input type="text" id="title" name="title" placeholder="Enter title"></label>
-        <label for="description">description <input type="text" id="description" name="description" placeholder="description"></label>
-        <button class="addBtn">add</button>
-    </form>
+    <!-- Section to display news cards -->
     <section class="news"></section>
 
+    <!-- Toast notifications -->
     <ul class="notifications"></ul>
     
+    <!-- Overlay -->
     <div class="overlay" id="modal-overlay"></div>
+
+    <!-- Modal for editing news -->
     <div class="modal" id="edit-modal">
-        <h3>Edit Product</h3>
+        <h3>Edit News</h3>
         <form id="edit-form">
-            <label for="title">title <input type="text" id="title" name="title" placeholder="Enter title"></label>
-            <label for="description">description <input type="text" id="description" name="description" placeholder="description"></label>
-          <button type="submit">Save</button>
-          <button type="button" id="close-modal">Cancel</button>
+            <label for="edit-title">Title:</label>
+            <input type="text" id="edit-title" name="title" placeholder="Enter title" required />
+            
+            <label for="edit-description">Description:</label>
+            <textarea id="edit-description" name="description" placeholder="Enter description" required></textarea>
+            
+            <button type="submit">Save</button>
+            <button type="button" id="close-edit-modal">Cancel</button>
         </form>
-      </div>
-        
+    </div>
+
+    <!-- Modal for adding news -->
+    <div class="modal" id="add-news-modal">
+        <h3>Add News</h3>
+        <form id="formAddNews">
+            <label for="add-title">Title:</label>
+            <input type="text" id="add-title" name="title" placeholder="Enter title" required />
+            
+            <label for="add-description">Description:</label>
+            <textarea id="add-description" name="description" placeholder="Enter description" required></textarea>
+            
+            <button type="submit">Add</button>
+            <button type="button" class="close-modal-btn">Cancel</button>
+        </form>
+    </div>
+
     <script src="news.js"></script>
 </body>
 </html>
