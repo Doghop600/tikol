@@ -9,6 +9,7 @@ const editModal = document.querySelector("#edit-modal");
 const overlay = document.querySelector("#modal-overlay");
 const closeAddNewsModalBtn = document.querySelector(".close-modal-btn");
 const closeEditModalBtn = document.querySelector("#close-edit-modal");
+const chanelBtn = document.querySelector('#chanelBtn')
 
 let editingIndex = null; // To store the index of the card being edited
 
@@ -21,6 +22,16 @@ const closeModal = (modal) => {
     modal.classList.remove("open");
     overlay.classList.remove("open");
 };
+
+// Закрытие модального окна редактирования
+closeEditModalBtn.addEventListener('click', () => {
+    closeModal(editModal); // Закрываем модальное окно редактирования
+});
+
+
+closeEditModalBtn.addEventListener('click', () => {
+    closeModal(editModal)
+})
 
 // Add News Modal
 btnNews.addEventListener("click", () => openModal(addNewsModal));
