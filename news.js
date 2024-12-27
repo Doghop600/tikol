@@ -23,6 +23,32 @@ const closeModal = (modal) => {
     overlay.classList.remove("open");
 };
 
+// Save to localStorage
+const saveToLocalStorage = () => {
+    try {
+        localStorage.setItem("news", JSON.stringify(newsArr));
+        console.log("Data saved to localStorage:", newsArr);
+    } catch (error) {
+        console.error("Error saving to localStorage:", error);
+    }
+};
+
+
+// Load from localStorage
+const loadFromLocalStorage = () => {
+    try {
+        const storedNews = JSON.parse(localStorage.getItem("news"));
+        if (storedNews) {
+            newsArr.push(...storedNews);
+            drawNews(newsArr);
+        }
+        console.log("Data loaded from localStorage:", newsArr);
+    } catch (error) {
+        console.error("Error loading from localStorage:", error);
+    }
+};
+
+
 // Закрытие модального окна редактирования
 closeEditModalBtn.addEventListener('click', () => {
     closeModal(editModal); // Закрываем модальное окно редактирования
@@ -63,6 +89,7 @@ formAddNews.addEventListener("submit", (event) => {
 
     newsArr.push(news);
     drawNews(newsArr);
+    saveToLocalStorage();
 
     closeModal(addNewsModal);
     formAddNews.reset();
@@ -105,6 +132,7 @@ newsSect.addEventListener("click", (event) => {
     if (event.target.classList.contains("delete-btn")) {
         newsArr.splice(index, 1);
         drawNews(newsArr);
+        saveToLocalStorage();
         createToast("success");
     }
 
@@ -131,8 +159,12 @@ editModal.querySelector("form").addEventListener("submit", (event) => {
 
     newsArr[editingIndex] = { title, description }; // Update the item
     drawNews(newsArr); // Redraw the news cards
-
+    saveToLocalStorage();
+    
     closeModal(editModal); // Close the modal
     createToast("success"); // Show success toast
     editingIndex = null; // Reset the editing index
 });
+
+// Load data on page load
+document.addEventListener("DOMContentLoaded", loadFromLocalStorage);
