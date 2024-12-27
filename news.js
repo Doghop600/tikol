@@ -10,6 +10,7 @@ const overlay = document.querySelector("#modal-overlay");
 const closeAddNewsModalBtn = document.querySelector(".close-modal-btn");
 const closeEditModalBtn = document.querySelector("#close-edit-modal");
 const chanelBtn = document.querySelector('#chanelBtn')
+const filterCategory = document.querySelector('#filter-category')
 
 let editingIndex = null; // To store the index of the card being edited
 
@@ -74,6 +75,8 @@ const drawNews = (data) => {
             return `<div class="divCard" data-index="${index}">
                 <h5>${item.title}</h5>
                 <p>${item.description}</p>
+                <img src=${item.imgUrl}/>
+                <p>#${item.category}</p>
                 <button class="edit-btn">Edit</button>
                 <button class="delete-btn">Delete</button>
             </div>`;
@@ -168,3 +171,12 @@ editModal.querySelector("form").addEventListener("submit", (event) => {
 
 // Load data on page load
 document.addEventListener("DOMContentLoaded", loadFromLocalStorage);
+
+filterCategory.addEventListener('change',() => {
+    const filter = filterCategory.value
+    console.log(filter)
+    const result = newsArr.filter(()=>{
+        
+    })
+})
+

@@ -10,6 +10,14 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
 </head>
 <body>
+
+    <div>
+        <select name="category" id="filter-category">
+            <option value="politics">Политика</option>
+            <option value="economics">Экономика</option>
+        </select>
+    </div>
+
     <!-- Button to open the "Add News" modal -->
     <button id="news-btn">Add News</button>
 
@@ -45,8 +53,14 @@
             <input type="text" id="add-title" name="title" placeholder="Enter title" required />
             
             <label for="add-description">Description:</label>
-            <textarea id="add-description" name="description" placeholder="Enter description" required></textarea>
             
+            <textarea id="add-description" name="description" placeholder="Enter description" required></textarea>
+            <input type="text" placeholder="enter img-url" name="imgUrl">
+            <select name="category" id="category">
+                <option value="politics">Политика</option>
+                <option value="economics">Экономика</option>
+            </select>
+
             <button type="submit">Add</button>
             <button type="button" class="close-modal-btn" id="chanelBtn">Cancel</button>
         </form>

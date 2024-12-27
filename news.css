@@ -320,3 +320,7 @@ button {
       opacity: 0;
   }
 }
+
+.divCard img {
+  width: 70%;
+}
