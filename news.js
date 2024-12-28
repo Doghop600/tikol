@@ -175,8 +175,9 @@ document.addEventListener("DOMContentLoaded", loadFromLocalStorage);
 filterCategory.addEventListener('change',() => {
     const filter = filterCategory.value
     console.log(filter)
-    const result = newsArr.filter(()=>{
-        
+    const result = newsArr.filter((item)=>{
+        return filter === 'all' || item.category === filter
     })
+    drawNews(result)
 })
 
