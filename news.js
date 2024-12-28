@@ -70,19 +70,27 @@ overlay.addEventListener("click", () => {
 
 // Draw news cards
 const drawNews = (data) => {
-    newsSect.innerHTML = data
+    const sortedData = data.sort((a, b) => b.rating - a.rating);
+
+    newsSect.innerHTML = sortedData
         .map((item, index) => {
+            const stars = Array(5)
+                .fill('<i class="fa-regular fa-star"></i>') // Пустые звёзды
+                .fill('<i class="fa-solid fa-star"></i>', 0, item.rating) // Закрашенные звёзды
+                .join("");
             return `<div class="divCard" data-index="${index}">
                 <h5>${item.title}</h5>
                 <p>${item.description}</p>
-                <img src=${item.imgUrl}/>
-                <p>#${item.category}</p>
+                <img src="${item.imgUrl}" alt="News Image"/>
+                <p>Category: #${item.category}</p>
+                <p>Rating: ${stars}</p>
                 <button class="edit-btn">Edit</button>
                 <button class="delete-btn">Delete</button>
             </div>`;
         })
         .join("");
 };
+
 
 // Add news
 formAddNews.addEventListener("submit", (event) => {
@@ -180,4 +188,3 @@ filterCategory.addEventListener('change',() => {
     })
     drawNews(result)
 })
-

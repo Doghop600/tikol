@@ -472,3 +472,32 @@ button.close-modal-btn {
 button.close-modal-btn:hover {
     background-color: #a71d2a;
 }
+/* Контейнер для звёзд */
+.star-rating {
+  display: inline-flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+/* Прячем радио-кнопки */
+.star-rating input {
+  display: none;
+}
+
+/* Стили для звёздочек */
+.star-rating label {
+  font-size: 24px; /* Размер звёзд */
+  color: #ccc; /* Цвет звёзд по умолчанию */
+  cursor: pointer;
+}
+
+/* Активная звезда и все предыдущие */
+.star-rating input:checked ~ label {
+  color: #f5b301; /* Цвет выбранных звёзд */
+}
+
+/* Эффект при наведении: при наведении на звезду подсвечиваются все предыдущие */
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  color: #ffcc00; /* Цвет при наведении */
+}
