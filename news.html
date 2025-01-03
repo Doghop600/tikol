@@ -18,6 +18,22 @@
         </select>
     </div>
 
+    <select id="filter-rating">
+        <option value="all">All Ratings</option>
+        <option value="5">5 Stars</option>
+        <option value="4">4 Stars</option>
+        <option value="3">3 Stars</option>
+        <option value="2">2 Stars</option>
+        <option value="1">1 Star</option>
+    </select>
+
+    <select id="img-rating">
+        <option value="all">all</option>
+        <option value="without">without img</option>
+        <option value="with img">with img</option>
+    </select>
+    
+
     <!-- Button to open the "Add News" modal -->
     <button id="news-btn">Add News</button>
 
@@ -39,6 +55,9 @@
             
             <label for="edit-description">Description:</label>
             <textarea id="edit-description" name="description" placeholder="Enter description" required></textarea>
+
+            <label for="edit-url">Url:</label>
+            <textarea type="text" id="edit-url" name="url" placeholder="Enter url" required></textarea>
             
             <button type="submit">Save</button>
             <button type="button" id="close-edit-modal">Cancel</button>
@@ -81,8 +100,17 @@
             <button type="submit">Add</button>
             <button type="button" class="close-modal-btn" id="chanelBtn">Cancel</button>
         </form>
-    </div>
+        </div>
 
+        <div class="loader" id="loader"></div>
+        <div id="content" style="display: none">
+        <h1>Data from Server:</h1>
+        <pre id="data"></pre>
+        </div>
+
+        <button id="fetchButton">Fetch Data</button>
+
+        <aside></aside>
     
 
     <script src="news.js"></script>

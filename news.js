@@ -11,6 +11,9 @@ const closeAddNewsModalBtn = document.querySelector(".close-modal-btn");
 const closeEditModalBtn = document.querySelector("#close-edit-modal");
 const chanelBtn = document.querySelector('#chanelBtn')
 const filterCategory = document.querySelector('#filter-category')
+const filterRating = document.querySelector('#filter-rating')
+const imgRating = document.querySelector('#img-rating')
+
 
 let editingIndex = null; // To store the index of the card being edited
 
@@ -98,6 +101,7 @@ formAddNews.addEventListener("submit", (event) => {
     const formData = new FormData(formAddNews);
     const news = Object.fromEntries(formData);
 
+    news.rating = Number(news.rating); // Преобразуем рейтинг в число
     newsArr.push(news);
     drawNews(newsArr);
     saveToLocalStorage();
@@ -107,6 +111,7 @@ formAddNews.addEventListener("submit", (event) => {
 
     createToast("success");
 });
+
 
 // Toast notifications
 const toastDetails = {
@@ -155,6 +160,8 @@ newsSect.addEventListener("click", (event) => {
         const news = newsArr[editingIndex];
         document.querySelector("#edit-title").value = news.title;
         document.querySelector("#edit-description").value = news.description;
+        document.querySelector("#edit-url").value = news.url
+        
 
         openModal(editModal);
     }
@@ -167,8 +174,9 @@ editModal.querySelector("form").addEventListener("submit", (event) => {
     // Update the news item in the array
     const title = document.querySelector("#edit-title").value;
     const description = document.querySelector("#edit-description").value;
+    const url = document.querySelector('#edit-url').value
 
-    newsArr[editingIndex] = { title, description }; // Update the item
+    newsArr[editingIndex] = { title, description, url }; // Update the item
     drawNews(newsArr); // Redraw the news cards
     saveToLocalStorage();
     
@@ -188,3 +196,55 @@ filterCategory.addEventListener('change',() => {
     })
     drawNews(result)
 })
+
+filterRating.addEventListener('change', () => {
+    const filter = filterRating.value; // Получаем выбранное значение
+    const filteredNews = newsArr.filter((item) => {
+        return filter === 'all' || item.rating === Number(filter);
+    });
+    drawNews(filteredNews); // Отображаем отфильтрованные новости
+});
+
+imgRating.addEventListener('change', () => {
+    const filterImg = imgRating.value
+    const filtredImg = newsArr.filter((item) => {
+        return filterImg === 'all' || (filterImg === 'without' && (!item.imgUrl || item.imgUrl.trim() === ''))
+        || (filterImg === 'with' && item.imgUrl || item.imgUrl.trim() !== '');
+    })
+    drawNews(filtredImg)
+})
+
+function fetchData() {
+    document.getElementById('loader').style.display = 'block';
+    document.getElementById('content').style.display = 'none';
+  
+    setTimeout(() => {
+      document.getElementById('loader').style.display = 'none';
+  
+      const data = { name: 'John Doe', email: 'john.doe@example.com' };
+  
+      document.getElementById('data').textContent = JSON.stringify(data, null, 2);
+      document.getElementById('content').style.display = 'block';
+    }, 3000); 
+  }
+  
+document.getElementById('fetchButton').addEventListener('click', fetchData);
+
+const criptoUrl = 'https://api.coindesk.com/v1/bpi/currentprice.json'
+
+function getCriptoData() {
+    const output = document.querySelector('aside')
+
+    fetch(criptoUrl).then(response => {
+        return response.json()
+    }).then(data=>{
+        console.log(data)
+        output.innerHTML = `USD-BTC: ${data.bpi.USD.rate} <br> EUR-BTC: ${data.bpi.USD.rate}`
+    })
+    .catch(error => {
+        console.log(error)
+        output.textContent = `error: ${error.massage}`
+    })
+    console.log(fetch(criptoUrl))
+}
+getCriptoData()
