@@ -81,12 +81,22 @@ const drawNews = (data) => {
                 .fill('<i class="fa-regular fa-star"></i>') // Пустые звёзды
                 .fill('<i class="fa-solid fa-star"></i>', 0, item.rating) // Закрашенные звёзды
                 .join("");
+
+            // Обработка отсутствия категории
+            const categories = item.category && item.category.trim() !== "" 
+                ? item.category.split(", ").map(cat => `<span class="category-item">${cat}</span>`).join(", ")
+                : "No categories"; 
+
             return `<div class="divCard" data-index="${index}">
                 <h5>${item.title}</h5>
                 <p>${item.description}</p>
                 <img src="${item.imgUrl}" alt="News Image"/>
-                <p>Category: #${item.category}</p>
+                <p>
+                    Categories:
+                    ${categories}
+                </p>
                 <p>Rating: ${stars}</p>
+                <p>Date: ${item.date}</p>
                 <button class="edit-btn">Edit</button>
                 <button class="delete-btn">Delete</button>
             </div>`;
@@ -95,11 +105,16 @@ const drawNews = (data) => {
 };
 
 
-// Add news
+
 formAddNews.addEventListener("submit", (event) => {
     event.preventDefault();
     const formData = new FormData(formAddNews);
     const news = Object.fromEntries(formData);
+
+    // Обработка пустого поля категории
+    if (!news.category || news.category.trim() === "") {
+        news.category = "No categories";
+    }
 
     news.rating = Number(news.rating); // Преобразуем рейтинг в число
     newsArr.push(news);
@@ -248,3 +263,26 @@ function getCriptoData() {
     console.log(fetch(criptoUrl))
 }
 getCriptoData()
+
+newsSect.addEventListener("click", (event) => {
+    if (event.target.classList.contains("category-item")) {
+        const cardElement = event.target.closest(".divCard");
+        const cardIndex = Number(cardElement.dataset.index);
+        const clickedCategory = event.target.textContent.trim();
+
+        removeCategory(cardIndex, clickedCategory);
+    }
+});
+
+const removeCategory = (index, category) => {
+    const cardData = newsArr[index];
+
+    // Удаляем категорию
+    const categories = cardData.category.split(", ");
+    const filteredCategories = categories.filter(cat => cat !== category);
+    cardData.category = filteredCategories.join(", ");
+
+    // Сохраняем изменения
+    saveToLocalStorage();
+    drawNews(newsArr);
+};

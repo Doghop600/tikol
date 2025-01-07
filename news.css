@@ -521,7 +521,11 @@ button.close-modal-btn:hover {
   }
 }
 
-/* Hide content until the request is done */
-#content {
-  display: none;
+.category-item {
+  color: #007bff;
+  cursor: crosshair; /* Устанавливаем курсор crosshair */
+}
+
+.category-item:hover {
+  text-decoration: underline;
 }
